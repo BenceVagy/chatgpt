@@ -1,0 +1,43 @@
+{
+   "action": {
+   },
+   "background": {
+      "service_worker": "background.js",
+      "type": "module"
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": [ "content-scripts/auth.js" ],
+      "matches": [ "https://ytbunsubscribe.echobot.dev/auth_redirect.html*" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": false,
+      "js": [ "content-scripts/payCallback.js" ],
+      "matches": [ "https://echobot.dev/ytbunsubscribe/checkout*" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": false,
+      "js": [ "content-scripts/ui.js" ],
+      "matches": [ "*://*.youtube.com/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "Easily unsubscribe from unwanted YouTube channels in bulk with Unsubscribe All for YouTube.",
+   "host_permissions": [ "*://*.youtube.com/*", "*://*.echobot.dev/*" ],
+   "icons": {
+      "128": "icon/128.png",
+      "16": "icon/16.png",
+      "32": "icon/32.png",
+      "48": "icon/48.png",
+      "96": "icon/96.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo2GLXZXbXdyfiTrQiyGHe80JSy29/YlgSBQeKpJTXkWdyHskVxJBJFNhmGZ5FHqMnyQwSAINSd8P9QaJfSap6DuF81aBAnzqNmRCvIXqLdXL8eY19QurxSYvamNmSZerjFN89Sm/BbL30Vhr25knvjAYbQ1z8/L+uKGlkxproLo4TmDolt9LKZI8snmvFp1ZMqZRA7xMoF+aW84vF7JEMNyQipBgm5bLNV7DIvCu7bM2IwCGWR75WEWsq/d/X1kV3+ENISnzhTyplJsM8Zr53qGFPhlbYyScuZZl+2te4nrVtu9jy695UbdTF/1d/15yicObllwOs6n/SJegtErsOwIDAQAB",
+   "manifest_version": 3,
+   "name": "Unsubscribe All for YouTube",
+   "permissions": [ "storage", "scripting" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.1.0",
+   "web_accessible_resources": [ {
+      "matches": [ "*://*.youtube.com/*" ],
+      "resources": [ "content-scripts/ui.css" ]
+   } ]
+}
